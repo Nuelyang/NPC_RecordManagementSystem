@@ -23,6 +23,26 @@ class CreateCitizensTable extends Migration
             $table->foreign('ward_id')
               ->references('id')->on('wards')->onDelete('cascade');
             $table->timestamps();
+
+
+            // Not Included in Question: Binds each citizen to a state / LGA / Ward
+            $table->unsignedBigInteger('state_id');
+            $table->foreign('state_id')
+              ->references('id')->on('states')->onDelete('cascade');
+            $table->timestamps();
+
+
+            $table->unsignedBigInteger('lga_id');
+            $table->foreign('lga_id')
+              ->references('id')->on('lgas')->onDelete('cascade');
+            $table->timestamps();
+
+
+            $table->unsignedBigInteger('ward_id');
+            $table->foreign('ward_id')
+              ->references('id')->on('wards')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

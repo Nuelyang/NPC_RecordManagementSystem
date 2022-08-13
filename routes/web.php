@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\IndexPageController::class, 'index']);
+Route::get('/info/{id}', [App\Http\Controllers\IndexPageController::class, 'showRecord']);
 
 Auth::routes();
 
